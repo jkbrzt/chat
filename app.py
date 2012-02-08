@@ -56,6 +56,7 @@ def home():
                 var source = new EventSource('/stream');
                 var out = document.getElementById('out');
                 source.onmessage = function(e) {
+                    // XSS in chat is fun
                     out.innerHTML =  e.data + '\\n' + out.innerHTML;
                 };
             }
