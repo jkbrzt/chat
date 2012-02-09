@@ -2,5 +2,5 @@ A primitive chat app created to experiment with Flask, Redis, Gevent & Server-Se
 
     pip install flask redis gevent gunicorn
 
-    gunicorn --debug -t 99999 app:app
+    gunicorn --debug --worker-class=gevent -t 99999 app:app
 
