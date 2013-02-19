@@ -12,6 +12,7 @@ red = redis.StrictRedis()
 def event_stream():
     pubsub = red.pubsub()
     pubsub.subscribe('chat')
+    # TODO: handle client disconnection.
     for message in pubsub.listen():
         print message
         yield 'data: %s\n\n' % message['data']
