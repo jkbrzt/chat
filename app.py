@@ -15,7 +15,8 @@ def event_stream():
     # TODO: handle client disconnection.
     for message in pubsub.listen():
         print message
-        yield 'data: %s\n\n' % message['data']
+        if message['type']=='message':
+            yield 'data: %s\n\n' % message['data'].decode('utf-8')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -77,4 +78,3 @@ def home():
 if __name__ == '__main__':
     app.debug = True
     app.run()
-
