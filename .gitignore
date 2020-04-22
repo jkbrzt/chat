@@ -1,0 +1,7 @@
+/lib
+/bin
+/include
+*dump.rdb
+*pip-selfcheck.json
+*Python
+*__pycache__/
