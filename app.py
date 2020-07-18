@@ -14,7 +14,7 @@ def event_stream():
     pubsub.subscribe('chat')
     # TODO: handle client disconnection.
     for message in pubsub.listen():
-        print message
+        print (message)
         if message['type']=='message':
             yield 'data: %s\n\n' % message['data'].decode('utf-8')
 
