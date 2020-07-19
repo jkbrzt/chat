@@ -14,7 +14,7 @@ def event_stream():
     pubsub.subscribe('chat')
     # TODO: handle client disconnection.
     for message in pubsub.listen():
-        print message
+        print (message)
         if message['type']=='message':
             yield 'data: %s\n\n' % message['data'].decode('utf-8')
 
@@ -59,8 +59,8 @@ def home():
                 var source = new EventSource('/stream');
                 var out = document.getElementById('out');
                 source.onmessage = function(e) {
-                    // XSS in chat is fun
-                    out.innerHTML =  e.data + '\\n' + out.innerHTML;
+                    // XSS in chat is fun (let's prevent that)
+                    out.textContent =  e.data + '\\n' + out.textContent;
                 };
             }
             $('#in').keyup(function(e){
